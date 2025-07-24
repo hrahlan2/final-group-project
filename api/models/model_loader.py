@@ -1,4 +1,3 @@
-""""
 from . import orders, order_details, customers, menu_items, resources, promotions, reviews, payments
 
 from ..dependencies.database import engine
@@ -14,4 +13,4 @@ def index():
     reviews.Base.metadata.create_all(engine)
     payments.Base.metadata.create_all(engine)
 
-"""
+

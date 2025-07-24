@@ -1,27 +1,18 @@
-from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel
-from .resources import Resource
-from .menu_items import Sandwich
+from pydantic import BaseModel, EmailStr
 
 
-class RecipeBase(BaseModel):
-    amount: int
+class CustomerBase(BaseModel):
+    name: str
+    email: EmailStr
+    phone_number: Optional[str] = None
+    address: Optional[str] = None
 
+class CustomerCreate(CustomerBase):
+    pass
 
-class RecipeCreate(RecipeBase):
-    sandwich_id: int
-    resource_id: int
-
-class RecipeUpdate(BaseModel):
-    sandwich_id: Optional[int] = None
-    resource_id: Optional[int] = None
-    amount: Optional[int] = None
-
-class Recipe(RecipeBase):
+class CustomerOut(CustomerBase):
     id: int
-    sandwich: Sandwich = None
-    resource: Resource = None
 
     class ConfigDict:
         from_attributes = True
