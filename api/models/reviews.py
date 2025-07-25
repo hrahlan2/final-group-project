@@ -10,3 +10,7 @@ class Review(Base):
     order_id = Column(Integer, ForeignKey("orders.id"), nullable=False)
     rating = Column(Integer, nullable=False)
     comment = Column(String(255), nullable=True)
+
+    menu_item_id = Column(Integer, ForeignKey("menu_items.id"), nullable=False)
+    menu_item = relationship("MenuItem", back_populates="reviews")
+
