@@ -1,31 +1,31 @@
-from datetime import datetime
-from typing import Optional
 from pydantic import BaseModel
-from .order_details import OrderDetail
+from typing import List, Optional
 
-
+class OrderItemCreate(BaseModel):
+    menu_item_id: int
+    quantity: int
 
 class OrderBase(BaseModel):
-    tracking_number: Optional[str] = None
+    guest_name: Optional[str]
+    guest_phone: Optional[str]
+    guest_address: Optional[str]
     status: Optional[str] = "placed"
-    total_price: float
-
+    items: List[OrderItemCreate]
 
 class OrderCreate(OrderBase):
-    customer_id: int
+    total_price: float  # calculated client-side or server-side
 
-
-class OrderUpdate(BaseModel):
-        tracking_number: Optional[str] = None
-        status: Optional[str] = None
-        total_price: Optional[float] = None
-
-
-class Order(OrderBase):
+class OrderOut(BaseModel):
     id: int
-    order_date: Optional[datetime] = None
-    order_details: list[OrderDetail] = None
-    customer_id: int
+    guest_name: Optional[str]
+    guest_phone: Optional[str]
+    guest_address: Optional[str]
+    tracking_number: Optional[str]
+    status: str
+    total_price: float
+    order_date: str
 
-    class ConfigDict:
-        from_attributes = True
+    class Config:
+        orm_mode = True
+
+
