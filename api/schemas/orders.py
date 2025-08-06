@@ -9,7 +9,8 @@ class OrderBase(BaseModel):
     guest_name: Optional[str]
     guest_phone: Optional[str]
     guest_address: Optional[str]
-    status: Optional[str] = "placed"
+    tracking_status: Optional[str] = "placed"
+    tracking_number: Optional[str] = None
     items: List[OrderItemCreate]
 
 class OrderCreate(OrderBase):
@@ -21,7 +22,7 @@ class OrderOut(BaseModel):
     guest_phone: Optional[str]
     guest_address: Optional[str]
     tracking_number: Optional[str]
-    status: str
+    tracking_status: str
     total_price: float
     order_date: str
 

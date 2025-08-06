@@ -13,8 +13,8 @@ class Order(Base):
     guest_phone = Column(String, nullable=True)
     guest_address = Column(String, nullable=True)
     order_date = Column(DATETIME, nullable=False, server_default=str(datetime.now()))
-    tracking_number = Column(String, unique=True)
-    status = Column(String, default="placed")
+    tracking_number = Column(String, unique=True, nullable=True)
+    tracking_status = Column(String, default="placed")
     total_price = Column(Float)
 
     customer = relationship("Customer", back_populates="orders")
