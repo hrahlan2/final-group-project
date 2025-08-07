@@ -13,9 +13,8 @@ class Order(Base):
     guest_phone = Column(String, nullable=True)
     guest_address = Column(String, nullable=True)
     order_date = Column(DATETIME, nullable=False, server_default=str(datetime.now()))
-    tracking_number = Column(String, unique=True)
-    status = Column(String, default="placed")
     total_price = Column(Float)
+    tracking_number = Column(String, unique=True, nullable=True, index=True)
 
     customer = relationship("Customer", back_populates="orders")
     order_details = relationship("OrderItem", back_populates="order", cascade="all, delete")
@@ -23,3 +22,15 @@ class Order(Base):
     promotions = relationship("Promotion", back_populates="order")
 
     order_items = relationship("OrderItem", back_populates="order")
+    tracking = relationship("TrackingStatus", backpopulates="order", uselist=False)
+
+
+class TrackingStatus(Base):
+    __tablename__ = 'tracking_statuses'
+
+    id = Column(Integer, primary_key=True, index=True)
+    tracking_number = Column(String, ForeignKey("orders.tracking_number"), unique=True, nullable=True)
+    tracking_status = Column(String, default="placed")
+    last_updated = Column(DATETIME, default=datetime.now())
+
+    orders = relationship("Order", back_populates="tracking_status")
