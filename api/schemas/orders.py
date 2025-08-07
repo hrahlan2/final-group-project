@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from typing import List, Optional
+from datetime import datetime
 
 class OrderItemCreate(BaseModel):
     menu_item_id: int
@@ -9,8 +10,6 @@ class OrderBase(BaseModel):
     guest_name: Optional[str]
     guest_phone: Optional[str]
     guest_address: Optional[str]
-    tracking_status: Optional[str] = "placed"
-    tracking_number: Optional[str] = None
     items: List[OrderItemCreate]
 
 class OrderCreate(OrderBase):

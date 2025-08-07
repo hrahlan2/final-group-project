@@ -30,4 +30,7 @@ def test_create_order(db_session):
     assert created_order.customer_name == "John Doe"
     assert created_order.description == "Test order"
 
+def test_order_has_tracking_number(client):
+    response = client.get("/orders")
 
+    assert "tracking_number" in response.json()
