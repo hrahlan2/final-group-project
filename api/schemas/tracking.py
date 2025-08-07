@@ -1,3 +1,4 @@
+"""
 from datetime import datetime
 from pydantic import BaseModel
 
@@ -9,3 +10,4 @@ class trackingStatusSchema(BaseModel):
 
     class config:
         orm_mode = True
+"""
