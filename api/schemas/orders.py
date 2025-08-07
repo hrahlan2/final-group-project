@@ -28,5 +28,3 @@ class OrderOut(BaseModel):
 
     class Config:
         orm_mode = True
-
-
