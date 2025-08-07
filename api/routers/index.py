@@ -7,3 +7,4 @@ def load_routes(app):
     app.include_router(reviews.router)
     app.include_router(resources.router)
     app.include_router(guest_orders.router)
+    app.include_router(menu_items.router)
