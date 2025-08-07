@@ -1,6 +1,6 @@
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
-from models import Order, OrderItem, MenuItem
+from api.models import Order, OrderItem, MenuItem
 from schemas.order import OrderCreate, OrderOut
 
 def create(db: Session, request: OrderCreate) -> OrderOut:
