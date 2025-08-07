@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from schemas.resources import Resource, ResourceCreate
-from controllers import resources
-from dependencies.database import get_db
+from api.schemas.resources import Resource, ResourceCreate
+from api.controllers import resources
+from api.dependencies.database import get_db
 
 router = APIRouter(prefix="/resources", tags=["Resources"])
 

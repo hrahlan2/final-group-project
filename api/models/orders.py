@@ -22,7 +22,7 @@ class Order(Base):
     promotions = relationship("Promotion", back_populates="order")
 
     order_items = relationship("OrderItem", back_populates="order")
-    tracking = relationship("TrackingStatus", backpopulates="order", uselist=False)
+    tracking = relationship("TrackingStatus", back_populates="order", uselist=False)
 
 
 class TrackingStatus(Base):
