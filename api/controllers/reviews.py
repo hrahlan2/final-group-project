@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from models.reviews import Review
-from schemas.reviews import ReviewCreate
+from api.models.reviews import Review
+from api.schemas.reviews import ReviewCreate
 
 def create_review(db: Session, review: ReviewCreate):
     db_review = Review(**review.dict())

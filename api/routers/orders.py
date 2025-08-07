@@ -11,7 +11,7 @@ router = APIRouter(
     prefix="/orders"
 )
 
-@router.post("/", response_model=schema.Order)
+@router.post("/", response_model=schema.OrderOut)
 def create(request: schema.OrderCreate, db: Session = Depends(get_db)):
     return controller.create(db=db, request=request)
 
