@@ -25,5 +25,11 @@ class OrderOut(BaseModel):
     total_price: float
     order_date: str
 
+
+class TrackingStatusSchema(BaseModel):
+    tracking_number: str
+    status: str
+    last_updated: datetime
+
     class Config:
         orm_mode = True
