@@ -12,3 +12,4 @@ class OrderDetail(Base):
 
     menu_item = relationship("MenuItem", back_populates="order_details")  # <- CHANGED
     order = relationship("Order", back_populates="order_details")
+
