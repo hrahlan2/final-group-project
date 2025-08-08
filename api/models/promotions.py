@@ -5,6 +5,6 @@ from ..dependencies.database import Base
 
 class Promotions(Base):
     __tablename__ = "promotions"
-    promo_code = Column(String, primary_key=True,index=True)
+    promo_code = Column(String(50), primary_key=True, index=True)
     Expiration_date = Column(DATETIME, default=datetime.now(), nullable=False)
-    is_expired = Column(String, default="NO")
+    is_expired = Column(String(5), default="NO")
