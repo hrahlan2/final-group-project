@@ -16,11 +16,12 @@ class Order(Base):
     tracking_number = Column(String(250), unique=True, nullable=True, index=True)
 
     customer = relationship("Customer", back_populates="orders")
-    order_details = relationship("OrderItem", back_populates="order", cascade="all, delete")
+    order_details = relationship("OrderDetail", back_populates="order", cascade="all, delete")
     payment = relationship("Payment", back_populates="order", uselist=False)
     promotions = relationship("Promotion", back_populates="order")
-    order_items = relationship("OrderItem", back_populates="order")
     tracking_status = relationship("TrackingStatus", back_populates="order", uselist=False)
+    order_items = relationship("OrderItem", back_populates="order", cascade="all, delete")
+
 
 class TrackingStatus(Base):
     __tablename__ = 'tracking_statuses'

@@ -12,5 +12,7 @@ class Customer(Base):
     phone_number = Column(String(20), nullable=True)
     address = Column(String(255), nullable=True)
 
-    order = relationship("Order", back_populates="customers")
-    review = relationship("Review", back_populates="customers")
+    orders = relationship("Order", back_populates="customer")
+    reviews = relationship("Review", back_populates="customer")  # <-- FIXED TO PLURAL
+
+
