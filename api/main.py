@@ -1,11 +1,12 @@
 import uvicorn
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from api.controllers import orders
+from api.routers import orders
+from api.routers import tracking
 from api.routers import index as indexRoute
 from api.models import model_loader
 from api.dependencies.config import conf
-from api.schemas import tracking
+from api.schemas.orders import TrackingStatusSchema
 
 app = FastAPI()
 
